@@ -3,11 +3,11 @@ This approach can be applied to different types of scrolling.
 
 ListView
 
-![Zoom_demo](https://github.com/dadrum/pinch_scrollable/blob/master/doc/vertical.gif?raw=true)
+![Zoom_demo](https://github.com/dadrum/pinch_scrollable/blob/main/doc/vertical.gif?raw=true)
 
 CarouselSlider
 
-![Zoom_demo](https://github.com/dadrum/pinch_scrollable/blob/master/doc/carousel.gif?raw=true)
+![Zoom_demo](https://github.com/dadrum/pinch_scrollable/blob/main/doc/carousel.gif?raw=true)
 
 and other
 
