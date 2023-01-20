@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:pinch_scrollable/pinch_scrollable.dart';
 
@@ -46,7 +47,6 @@ class MyListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PinchScrollableArea(
-      borderRadius: BorderRadius.circular(50),
       child: Scaffold(
           appBar: AppBar(
             title: Text('Pinch scrollable demo'),
@@ -86,36 +86,35 @@ class _MuseumsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return
-    //   StreamBuilder<bool>(
-    //     initialData: false,
-    //     stream: context
-    //         .findAncestorStateOfType<PinchScrollableAreaState>()
-    //         ?.zoomStream,
-    //     builder: (context, snapshot) {
-    //       print(snapshot);
-          return ListView.separated(
-            itemCount: _museums.length,
-            physics: PinchLockablePhysics.build(context),
-            // physics: (snapshot.data ?? false)
-            //     ? const NeverScrollableScrollPhysics()
-            //     : null,
-            separatorBuilder: (context, index) => const SizedBox(height: 16),
-            itemBuilder: (context, index) {
-              final details = _museums.elementAt(index);
-              final imageKey = GlobalKey();
-              return PinchItemContainer(
-                imageWidgetKey: imageKey,
-                imageUrl: details.imageUrl,
-                child: MuseumDetailsWidgetMuseum(
-                  museum: details,
-                  imageKey: imageKey,
-                ),
-              );
-            },
-            padding: EdgeInsets.all(16),
-          );
-  //       });
+    return Center(
+      child: CarouselSlider.builder(
+          itemCount: _museums.length,
+          itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
+            final details = _museums.elementAt(itemIndex);
+            final imageKey = GlobalKey();
+            return PinchItemContainer(
+              imageWidgetKey: imageKey,
+              imageUrl: details.imageUrl,
+              child: MuseumDetailsWidgetMuseum(
+                museum: details,
+                imageKey: imageKey,
+              ),
+            );
+          },
+          options: CarouselOptions(
+            height: 500,
+            aspectRatio: 16 / 9,
+            viewportFraction: 0.8,
+            initialPage: 0,
+            scrollPhysics: PinchScrollLockPhysics.build(context),
+            enableInfiniteScroll: true,
+            reverse: false,
+            autoPlay: false,
+            enlargeCenterPage: true,
+            enlargeFactor: 0.3,
+            scrollDirection: Axis.horizontal,
+          )),
+    );
   }
 }
 
@@ -140,28 +139,28 @@ class MuseumDetailsWidgetMuseum extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CachedNetworkImage(
-                key: imageKey,
-                imageUrl: museum.imageUrl,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                museum.title,
-                textAlign: TextAlign.start,
-                style: Theme.of(context).textTheme.headline5,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                museum.details,
-                textAlign: TextAlign.start,
-              ),
-            ],
-          ),
+        padding: EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            CachedNetworkImage(
+              key: imageKey,
+              imageUrl: museum.imageUrl,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              museum.title,
+              textAlign: TextAlign.start,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              museum.details,
+              textAlign: TextAlign.start,
+            ),
+          ],
+        ),
       ),
     );
   }

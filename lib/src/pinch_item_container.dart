@@ -36,7 +36,7 @@ class PinchItemContainer extends StatefulWidget {
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 class _PinchItemContainerState extends State<PinchItemContainer> {
-  late final LinkedHashMap<int, Offset> _fingers;
+  late final Map<int, Offset> _fingers;
 
   // a zone controller of displaying image's zooming
   late StreamController<Object?> _pinchAreaStreamController;
@@ -48,8 +48,7 @@ class _PinchItemContainerState extends State<PinchItemContainer> {
   // ---------------------------------------------------------------------------
   @override
   void initState() {
-    // ignore: prefer_collection_literals
-    _fingers = LinkedHashMap<int, Offset>();
+    _fingers = <int, Offset>{};
 
     super.initState();
   }
@@ -146,8 +145,7 @@ class _PinchItemContainerState extends State<PinchItemContainer> {
     final Offset f1 = firstFingers.elementAt(0);
     final Offset f2 = firstFingers.elementAt(1);
 
-    return sqrt(
-        (f1.dx - f2.dx) * (f1.dx - f2.dx) + (f1.dy - f2.dy) * (f1.dy - f2.dy));
+    return sqrt((f1.dx - f2.dx) * (f1.dx - f2.dx) + (f1.dy - f2.dy) * (f1.dy - f2.dy));
   }
 
   // ---------------------------------------------------------------------------

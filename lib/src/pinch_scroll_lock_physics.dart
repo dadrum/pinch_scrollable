@@ -12,8 +12,8 @@ typedef ZoomControllerSubscription = StreamSubscription<bool>;
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 // ignore: must_be_immutable
-class PinchLockablePhysics extends ScrollPhysics {
-  PinchLockablePhysics._(ScrollPhysics? physics, BuildContext? context)
+class PinchScrollLockPhysics extends ScrollPhysics {
+  PinchScrollLockPhysics._(ScrollPhysics? physics, BuildContext? context)
       : super(parent: physics) {
     final PinchScrollableAreaState? scrollableAreaState =
         context?.findAncestorStateOfType<PinchScrollableAreaState>();
@@ -38,7 +38,7 @@ class PinchLockablePhysics extends ScrollPhysics {
   ZoomControllerSubscription? _zoomControllerSubscription;
 
   // ---------------------------------------------------------------------------
-  static PinchLockablePhysics build(BuildContext context) {
+  static PinchScrollLockPhysics build(BuildContext context) {
     final ScrollPhysics scrollPhysics;
     switch (defaultTargetPlatform) {
       case TargetPlatform.iOS:
@@ -56,7 +56,7 @@ class PinchLockablePhysics extends ScrollPhysics {
       default:
         scrollPhysics = const BouncingScrollPhysics();
     }
-    return PinchLockablePhysics._(scrollPhysics, context);
+    return PinchScrollLockPhysics._(scrollPhysics, context);
   }
 
   // ------------------------------------------------------------------
@@ -77,7 +77,7 @@ class PinchLockablePhysics extends ScrollPhysics {
   // ------------------------------------------------------------------
   @override
   ScrollPhysics applyTo(ScrollPhysics? ancestor) {
-    return PinchLockablePhysics._(buildParent(ancestor), _context);
+    return PinchScrollLockPhysics._(buildParent(ancestor), _context);
   }
 
   // ------------------------------------------------------------------

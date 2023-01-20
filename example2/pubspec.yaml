@@ -1,0 +1,25 @@
+name: example
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+publish_to: none
+
+environment:
+  sdk: '>=2.18.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  pinch_scrollable:
+    path: ../
+
+  cached_network_image: ^3.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

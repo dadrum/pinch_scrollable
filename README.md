@@ -1,39 +1,59 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+This package helps to create a scrollable set of widgets containing images with zoom effect.
+This approach can be applied to different types of scrolling.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+ListView
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+![Zoom_demo](https://github.com/dadrum/pinch_scrollable/blob/master/doc/vertical.gif?raw=true)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+CarouselSlider
+
+![Zoom_demo](https://github.com/dadrum/pinch_scrollable/blob/master/doc/carousel.gif?raw=true)
+
+and other
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Images can be enlarged with a pinch. When released, they regain their position and size.
+The package has a special tool that allow to turn off scrolling in the list during image magnification
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the dependency to your `pubspec.yaml`:
+```
+pinch_scrollable: ^1.0.0
+```
+
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+The effect is achieved when using:
+PinchScrollableArea - a zone displaying image's zooming
+PinchItemContainer - а container that accepts gestures and contains an image inside that needs to be enlarged
+PinchScrollLockPhysics - special physics that prevents scrolling of the list
 
+Simplified code structure: 
 ```dart
-const like = 'sample';
+PinchScrollableArea(
+  ...
+    Builder(
+      builder: (context) => ListView(
+        physics: PinchScrollLockPhysics.build(context),
+        itemBuilder: (context, index) {
+          final key = GlobalKey();
+          return PinchItemContainer(
+            imageWidgetKey: key,
+            imageUrl: imageUrl,
+            child: CachedNetworkImage(
+              key: key,
+              imageUrl: imageUrl,
+            ),
+          );
+        },
+      ),
+    )
+)
 ```
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+The Builder widget is used so PinchScrollLockPhysics can use the PinchScrollableArea's state.
+There is an approach not to use the Builder located in the example folder. 
+The key is required for use and is needed to determine the image parameters.
