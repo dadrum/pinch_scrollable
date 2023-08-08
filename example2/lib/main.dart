@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-@immutable
 class MuseumDetails {
   const MuseumDetails({
     required this.title,
@@ -140,7 +139,7 @@ class MuseumDetailsWidgetMuseum extends StatelessWidget {
             Text(
               museum.title,
               textAlign: TextAlign.start,
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
             Text(

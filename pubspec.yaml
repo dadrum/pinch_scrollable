@@ -1,10 +1,10 @@
 name: pinch_scrollable
-description: Pinch to zoom images in scrolling widgets.
-version: 1.0.0
+description: Pinch to zoom images in scrolling widgets. This package helps to create a scrollable set of widgets containing images with zoom effect.
+version: 1.0.1
 homepage: https://github.com/dadrum/pinch_scrollable
 
 environment:
-  sdk: '>=2.18.6 <3.0.0'
+  sdk: '>=3.0.0 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
@@ -15,4 +15,4 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.2

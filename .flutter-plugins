@@ -1,8 +1,7 @@
 # This is a generated file; do not edit or check into version control.
-path_provider=/Users/pavel/libs/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.11/
-path_provider_android=/Users/pavel/libs/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.22/
-path_provider_ios=/Users/pavel/libs/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.11/
-path_provider_linux=/Users/pavel/libs/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.7/
-path_provider_macos=/Users/pavel/libs/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.7/
-path_provider_windows=/Users/pavel/libs/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.3/
-sqflite=/Users/pavel/libs/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-2.2.3/
+path_provider=/Users/pavel/.pub-cache/hosted/pub.dev/path_provider-2.1.0/
+path_provider_android=/Users/pavel/.pub-cache/hosted/pub.dev/path_provider_android-2.1.0/
+path_provider_foundation=/Users/pavel/.pub-cache/hosted/pub.dev/path_provider_foundation-2.3.0/
+path_provider_linux=/Users/pavel/.pub-cache/hosted/pub.dev/path_provider_linux-2.2.0/
+path_provider_windows=/Users/pavel/.pub-cache/hosted/pub.dev/path_provider_windows-2.2.0/
+sqflite=/Users/pavel/.pub-cache/hosted/pub.dev/sqflite-2.3.0/

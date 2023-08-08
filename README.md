@@ -20,16 +20,16 @@ The package has a special tool that allow to turn off scrolling in the list duri
 
 Add the dependency to your `pubspec.yaml`:
 ```
-pinch_scrollable: ^1.0.0
+pinch_scrollable: ^1.0.1
 ```
 
 
 ## Usage
 
-The effect is achieved when using:
-PinchScrollableArea - a zone displaying image's zooming
-PinchItemContainer - а container that accepts gestures and contains an image inside that needs to be enlarged
-PinchScrollLockPhysics - special physics that prevents scrolling of the list
+The effect is achieved when using:  
+PinchScrollableArea - a zone displaying image's zooming;  
+PinchItemContainer - а container that accepts gestures and contains an image inside that needs to be enlarged;  
+PinchScrollLockPhysics - special physics that prevents scrolling of the list.  
 
 Simplified code structure: 
 ```dart

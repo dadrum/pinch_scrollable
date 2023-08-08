@@ -28,7 +28,7 @@ class PinchScrollableArea extends StatefulWidget {
   final Color? fadeColor;
 
   // custom image border
-  final BorderRadius? borderRadius;
+  final BorderRadiusGeometry? borderRadius;
 
   // How to inscribe the image into the space allocated during layout.
   final BoxFit? imageFit;

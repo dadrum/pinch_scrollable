@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:collection';
 import 'dart:math';
 
 import 'package:flutter/gestures.dart';
@@ -145,7 +144,8 @@ class _PinchItemContainerState extends State<PinchItemContainer> {
     final Offset f1 = firstFingers.elementAt(0);
     final Offset f2 = firstFingers.elementAt(1);
 
-    return sqrt((f1.dx - f2.dx) * (f1.dx - f2.dx) + (f1.dy - f2.dy) * (f1.dy - f2.dy));
+    return sqrt(
+        (f1.dx - f2.dx) * (f1.dx - f2.dx) + (f1.dy - f2.dy) * (f1.dy - f2.dy));
   }
 
   // ---------------------------------------------------------------------------

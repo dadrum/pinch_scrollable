@@ -89,7 +89,8 @@ class _MuseumsList extends StatelessWidget {
     return Center(
       child: CarouselSlider.builder(
           itemCount: _museums.length,
-          itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
+          itemBuilder:
+              (BuildContext context, int itemIndex, int pageViewIndex) {
             final details = _museums.elementAt(itemIndex);
             final imageKey = GlobalKey();
             return PinchItemContainer(
@@ -152,7 +153,7 @@ class MuseumDetailsWidgetMuseum extends StatelessWidget {
             Text(
               museum.title,
               textAlign: TextAlign.start,
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
             Text(
