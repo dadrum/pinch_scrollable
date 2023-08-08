@@ -123,7 +123,7 @@ class PinchScrollableAreaState extends State<PinchScrollableArea> {
 
     if (widget.borderRadius != null) {
       imageContent = ClipRRect(
-        borderRadius: widget.borderRadius,
+        borderRadius: widget.borderRadius!,
         child: imageContent,
       );
     }
