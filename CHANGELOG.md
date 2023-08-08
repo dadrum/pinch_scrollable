@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Removed a code formatting issue.
+
 ## 1.0.2
 
 - Removed a code formatting issue.
