@@ -1,3 +1,8 @@
+## 1.0.4
+
+- Fixed pinchAreaStreamController issue.
+- Upgraded dependencies.
+
 ## 1.0.3
 
 - Removed a code formatting issue.

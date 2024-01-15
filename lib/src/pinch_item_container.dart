@@ -38,7 +38,7 @@ class _PinchItemContainerState extends State<PinchItemContainer> {
   late final Map<int, Offset> _fingers;
 
   // a zone controller of displaying image's zooming
-  late StreamController<Object?> _pinchAreaStreamController;
+  StreamController<Object?>? _pinchAreaStreamController;
 
   double? _startDistance;
 
@@ -59,12 +59,7 @@ class _PinchItemContainerState extends State<PinchItemContainer> {
     final PinchScrollableAreaState? result =
         context.findAncestorStateOfType<PinchScrollableAreaState>();
 
-    if (result?.eventsStreamController == null) {
-      throw UnimplementedError(
-          'PinchScrollableArea is not found or not initialized');
-    }
-
-    _pinchAreaStreamController = result!.eventsStreamController!;
+    _pinchAreaStreamController = result?.eventsStreamController!;
 
     super.didChangeDependencies();
   }
@@ -150,7 +145,10 @@ class _PinchItemContainerState extends State<PinchItemContainer> {
 
   // ---------------------------------------------------------------------------
   void _onScaleStart(ScaleStartDetails details) {
-    if (!_pinchAreaStreamController.isClosed) {
+    if (_pinchAreaStreamController == null) {
+      return;
+    }
+    if (!_pinchAreaStreamController!.isClosed) {
       // determinate source data of image
       final RenderBox renderObject =
           widget.imageWidgetKey.currentContext?.findRenderObject() as RenderBox;
@@ -158,30 +156,36 @@ class _PinchItemContainerState extends State<PinchItemContainer> {
       final Offset position = renderObject.localToGlobal(Offset.zero);
 
       // add to stream an image initialization details
-      _pinchAreaStreamController.add(PinchImageData(
+      _pinchAreaStreamController!.add(PinchImageData(
         globalPosition: position,
         paintBounds: renderObject.paintBounds,
         imagePath: widget.imageUrl,
       ));
 
       // add a pinch start event to stream
-      _pinchAreaStreamController.add(details);
+      _pinchAreaStreamController!.add(details);
     }
   }
 
   // ---------------------------------------------------------------------------
   void _onScaleUpdate(ScaleUpdateDetails details) {
-    if (!_pinchAreaStreamController.isClosed) {
+    if (_pinchAreaStreamController == null) {
+      return;
+    }
+    if (!_pinchAreaStreamController!.isClosed) {
       // add a new pinch details event to stream
-      _pinchAreaStreamController.add(details);
+      _pinchAreaStreamController!.add(details);
     }
   }
 
   // ---------------------------------------------------------------------------
   void _onScaleEnd(ScaleEndDetails details) {
-    if (!_pinchAreaStreamController.isClosed) {
+    if (_pinchAreaStreamController == null) {
+      return;
+    }
+    if (!_pinchAreaStreamController!.isClosed) {
       // add a pinch end event to stream
-      _pinchAreaStreamController.add(details);
+      _pinchAreaStreamController!.add(details);
     }
   }
 }
