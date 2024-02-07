@@ -12,11 +12,13 @@ import 'pinch_scrollable_area.dart';
 // A container that accepts gestures and contains an image inside that needs to be enlarged
 class PinchItemContainer extends StatefulWidget {
   const PinchItemContainer({
-    Key? key,
+    super.key,
     required this.child,
     required this.imageWidgetKey,
     required this.imageUrl,
-  }) : super(key: key);
+    this.onZoomStart,
+    this.onZoomEnd,
+  });
 
   // A widget that accepts pinch gestures
   final Widget child;
@@ -26,6 +28,10 @@ class PinchItemContainer extends StatefulWidget {
 
   // An image url, that displaying in child and will zoom
   final String imageUrl;
+
+  final VoidCallback? onZoomStart;
+
+  final VoidCallback? onZoomEnd;
 
   @override
   State createState() => _PinchItemContainerState();
@@ -72,6 +78,7 @@ class _PinchItemContainerState extends State<PinchItemContainer> {
         final int oldFingersCount = _fingers.length;
         _fingers[event.pointer] = event.position;
         if (oldFingersCount < 2 && _fingers.length >= 2) {
+          widget.onZoomStart?.call();
           _startDistance = _fingersDistance();
           _lastFocalPoint = _focalPoint();
           _onScaleStart(ScaleStartDetails());
@@ -97,6 +104,7 @@ class _PinchItemContainerState extends State<PinchItemContainer> {
         final int oldFingersCount = _fingers.length;
         _fingers.remove(event.pointer);
         if (oldFingersCount >= 2 && _fingers.length < 2) {
+          widget.onZoomEnd?.call();
           _startDistance = null;
           _onScaleEnd(ScaleEndDetails());
         }

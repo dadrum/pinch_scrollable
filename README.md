@@ -20,7 +20,7 @@ The package has a special tool that allow to turn off scrolling in the list duri
 
 Add the dependency to your `pubspec.yaml`:
 ```
-pinch_scrollable: ^1.0.1
+pinch_scrollable: ^1.0.5
 ```
 
 

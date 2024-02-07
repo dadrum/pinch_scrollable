@@ -1,6 +1,6 @@
 name: pinch_scrollable
 description: Pinch to zoom images in scrolling widgets. This package helps to create a scrollable set of widgets containing images with zoom effect.
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/dadrum/pinch_scrollable
 
 environment:

@@ -1,3 +1,7 @@
+## 1.0.5
+
+- onZoomStart and onZoomEnd added
+
 ## 1.0.4
 
 - Fixed pinchAreaStreamController issue.

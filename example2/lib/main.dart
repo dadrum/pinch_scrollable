@@ -98,6 +98,8 @@ class _MuseumsList extends StatelessWidget {
             museum: details,
             imageKey: imageKey,
           ),
+          onZoomEnd: () => print('onZoomEnd $imageKey'),
+          onZoomStart: () => print('onZoomStart $imageKey'),
         );
       },
       padding: EdgeInsets.all(16),

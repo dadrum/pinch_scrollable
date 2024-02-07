@@ -11,14 +11,14 @@ import 'package:pinch_scrollable/src/pinch_image_data.dart';
 // a zone displaying image's zooming
 class PinchScrollableArea extends StatefulWidget {
   const PinchScrollableArea({
-    Key? key,
+    super.key,
     required this.child,
     this.fadeColor,
     this.imageFit,
     this.httpHeaders,
     this.borderRadius,
     this.releaseDuration = defaultReleaseDuration,
-  }) : super(key: key);
+  });
 
   static const int defaultReleaseDuration = 300;
 
