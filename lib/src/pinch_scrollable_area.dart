@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -17,6 +18,7 @@ class PinchScrollableArea extends StatefulWidget {
     this.imageFit,
     this.httpHeaders,
     this.borderRadius,
+    this.isLocalFile = false,
     this.releaseDuration = defaultReleaseDuration,
   });
 
@@ -32,6 +34,10 @@ class PinchScrollableArea extends StatefulWidget {
 
   // How to inscribe the image into the space allocated during layout.
   final BoxFit? imageFit;
+
+  // [True] - the image is stored on the device.
+  // [False] - the image is stored on a remote server.
+  final bool isLocalFile;
 
   // release duration in milliseconds
   final int releaseDuration;
@@ -110,15 +116,21 @@ class PinchScrollableAreaState extends State<PinchScrollableArea> {
   // ---------------------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
-    final bool initialized = imageInitialized();
-    Widget imageContent = initialized
-        ? CachedNetworkImage(
-            imageUrl: _imageUrl!,
-            fit: widget.imageFit ?? BoxFit.cover,
-            height: _imageHeight,
-            width: _imageWidth,
-            httpHeaders: widget.httpHeaders,
-          )
+    Widget imageContent = imageInitialized()
+        ? (widget.isLocalFile
+            ? Image.file(
+                File(_imageUrl!),
+                fit: widget.imageFit ?? BoxFit.cover,
+                height: _imageHeight,
+                width: _imageWidth,
+              )
+            : CachedNetworkImage(
+                imageUrl: _imageUrl!,
+                fit: widget.imageFit ?? BoxFit.cover,
+                height: _imageHeight,
+                width: _imageWidth,
+                httpHeaders: widget.httpHeaders,
+              ))
         : const SizedBox.shrink();
 
     if (widget.borderRadius != null) {

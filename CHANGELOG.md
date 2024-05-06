@@ -1,3 +1,7 @@
+## 1.0.6
+
+- isLocalFile parameter added
+- 
 ## 1.0.5
 
 - onZoomStart and onZoomEnd added
